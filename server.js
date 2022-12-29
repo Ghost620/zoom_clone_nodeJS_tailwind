@@ -5,9 +5,10 @@ const app = express();
 const server = require('http').Server(app);
 
 app.set('view engine', 'ejs')
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.status(200).render('room')
+    res.status(200).redirect(`/${uuidv4()}`)
 })
 
 app.get('/:romm', (req, res) => {
