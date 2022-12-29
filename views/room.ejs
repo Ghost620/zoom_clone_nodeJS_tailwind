@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> ZOOM Clone </title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <scr src="script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+    </script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div id="video-grid" class="border-solid border-2 border-sky-500 flex justify-center ">
