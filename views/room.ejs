@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> ZOOM Clone </title>
     <script src="https://kit.fontawesome.com/6a61c3b3bd.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
@@ -28,36 +29,36 @@
             </div>
 
             <div class="main_controls flex bg-gray-900 text-white p-1 justify-between">
-                <div class="blocks flex">
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer hover:text-[#343434]">
+                <div class="block flex">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-microphone"></i>
                         <span>Mute</span>
 
                     </div>
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-video"></i>
                         <span>Stop Video</span>
                     </div>
                 </div>
                 <div class="block flex">
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-shield-alt"></i>
                         <span>Security</span>
 
                     </div>
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-user-friends"></i>
                         <span>Participants</span>
 
                     </div>
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-comment-alt"></i>
                         <span>Chat</span>
 
                     </div>
                 </div>
                 <div class="block flex">
-                    <div class="flex flex-col justify-center items-center px-8 py-10 min-w-80 cursor-pointer">
+                    <div class="flex flex-col justify-center items-center px-6 py-2 min-w-80 cursor-pointer hover:bg-gray-800 rounded-md">
                         <i class="fa-solid fa-phone-slash text-red-600"></i>
                         <span class="text-red-200 font-medium">Leave Meeting</span>
                     </div>
@@ -68,9 +69,15 @@
         </div>
 
 
-        <div class="right w-2/12 bg-gray-700 text-white">
+        <div class="right w-2/12 bg-gray-700 text-white flex flex-col items-center">
             <div class="main_header">
-                <h6>Chat</h6>
+                <h6 class="p-5">Chat</h6>
+            </div>
+            <div class="main_chat_window grow">
+
+            </div>
+            <div class="main_message_container w-full px-2.5 py-4 flex">
+                <input id="chat_messages" type="text" placeholder="Type message here..." class="w-full grow bg-transparent border-none text-[#F5F5F5]" />
             </div>
         </div>
     </main>

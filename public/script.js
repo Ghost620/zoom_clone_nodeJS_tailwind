@@ -56,3 +56,11 @@ const addVideoStream = (video, stream) => {
     })
     document.getElementById('video-grid').append(video)
 }
+
+$('html').keydown((e) => {
+    if (e.which == 13 && document.querySelector('input').value.length !== 0) {
+        console.log(document.querySelector('input').value)
+        socket.emit('message', document.querySelector('input').value)
+        document.querySelector('input').value = ''
+    }
+})
