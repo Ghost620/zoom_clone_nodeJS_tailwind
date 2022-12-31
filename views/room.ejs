@@ -69,12 +69,14 @@
         </div>
 
 
-        <div class="right w-2/12 bg-gray-700 text-white flex flex-col items-center">
+        <div class="right w-2/12 bg-gray-700 text-white flex flex-col">
             <div class="main_header">
-                <h6 class="p-5">Chat</h6>
+                <h6 class="p-5 text-center font-bold">CHAT</h6>
             </div>
-            <div class="main_chat_window grow">
+            <div class="main_chat_window grow overflow-y-auto">
+                <ul class="messages p-3 items-left">
 
+                </ul>
             </div>
             <div class="main_message_container w-full px-2.5 py-4 flex">
                 <input id="chat_messages" type="text" placeholder="Type message here..." class="w-full grow bg-transparent border-none text-[#F5F5F5]" />
