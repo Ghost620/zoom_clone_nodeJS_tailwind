@@ -22,11 +22,16 @@ app.get('/:romm', (req, res) => {
 io.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId)
-        //socket.to(roomId).broadcast.emit('user-connected', userId)
+        socket.broadcast.to(roomId).emit('user-connected', userId);
         socket.on('message', (message) => {
             io.to(roomId).emit('createMessage', message)
         })
     })
+
+    socket.on('disconnect', () => {
+        socket.to(roomId).broadcast.emit('user-disconnected', userId)
+    })
+    
 })
 
-server.listen(3000);
+server.listen(process.env.PORT || 3030)

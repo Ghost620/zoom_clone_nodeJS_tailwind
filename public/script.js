@@ -38,6 +38,10 @@ var peer = new Peer(undefined, {
     port: 3000
 })
 
+socket.on('user-disconnected', userId => {
+    if (peer[userId]) peer[userId].close()
+})
+
 peer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id)
     console.log(` ROOM JOINED : ${id}`)
@@ -80,3 +84,64 @@ const scrollToBottom = () => {
     d.scrollTop(d.prop("scrollHeight"))
 }
 
+
+// Mute Unmute Mic
+
+const setMuteButton = () => {
+    const html = `
+        <i class="fa-solid fa-microphone-lines"></i>
+        <span>Mute</span>
+    `
+    document.querySelector('.main_mute_button').innerHTML = html
+}
+
+const setUnmuteButtton = () => {
+    const html = `
+        <i class="unmute fa-solid fa-microphone-lines-slash text-red-600"></i>
+        <span class="text-red-200">Unmute</span>
+    `
+    document.querySelector('.main_mute_button').innerHTML = html
+}
+
+const muteUnmute = () => {
+
+    const enabled = myVideoStream.getAudioTracks()[0].enabled;
+    if (enabled) {
+        myVideoStream.getAudioTracks()[0].enabled = false;
+        setUnmuteButtton();
+    } else {
+        setMuteButton();
+        myVideoStream.getAudioTracks()[0] = true;
+    }
+
+}
+
+
+// Stop Play Video 
+
+const setPlayVideo = () => {
+    const html = `
+        <i class="stop fa-solid fa-video-slash text-red-600"></i>
+        <span class="text-red-200">Stop Video</span>
+    `
+    document.querySelector('.main_video_button').innerHTML = html
+}
+
+const setStopVideo = () => {
+    const html = `
+        <i class="fa-solid fa-video"></i>
+        <span>Stop Video</span>
+    `
+    document.querySelector('.main_video_button').innerHTML = html
+}
+
+const playStop = () => {
+    const enabled = myVideoStream.getVideoTracks()[0].enabled;
+    if (enabled) {
+        myVideoStream.getVideoTracks()[0].enabled = false;
+        setPlayVideo();
+    } else {
+        setStopVideo();
+        myVideoStream.geVideoTracks()[0] = true;
+    }
+}
