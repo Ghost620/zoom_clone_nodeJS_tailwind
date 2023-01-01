@@ -20,9 +20,10 @@ app.get('/:romm', (req, res) => {
 })
 
 io.on('connection', (socket) => {
+        
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId)
-        socket.broadcast.to(roomId).emit('user-connected', userId);
+        socket.to(roomId).broadcast.emit('user-connected', userId);
         socket.on('message', (message) => {
             io.to(roomId).emit('createMessage', message)
         })
@@ -34,4 +35,4 @@ io.on('connection', (socket) => {
     
 })
 
-server.listen(process.env.PORT || 3030)
+server.listen(process.env.PORT || 3000)
